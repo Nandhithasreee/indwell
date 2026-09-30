@@ -18,8 +18,11 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-secret-key-change-in-production
 DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
-
-DJANGO_ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*")
+# settings.py
+DJANGO_ALLOWED_HOSTS = os.getenv(
+    "DJANGO_ALLOWED_HOSTS", 
+    "localhost,127.0.0.1,.vercel.app,.now.sh"
+)
 ALLOWED_HOSTS = [host.strip() for host in DJANGO_ALLOWED_HOSTS.split(",") if host.strip()]
 
 INSTALLED_APPS = [
