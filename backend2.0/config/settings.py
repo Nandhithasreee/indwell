@@ -18,12 +18,23 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-secret-key-change-in-production
 DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
-# settings.py
+
+# 1. Fallback includes wildcards for Vercel deployment URLs (.vercel.app, .now.sh)
 DJANGO_ALLOWED_HOSTS = os.getenv(
     "DJANGO_ALLOWED_HOSTS", 
     "localhost,127.0.0.1,.vercel.app,.now.sh"
 )
+
+# Parse string to list
 ALLOWED_HOSTS = [host.strip() for host in DJANGO_ALLOWED_HOSTS.split(",") if host.strip()]
+
+# 2. Add Vercel automatically detected deployment host if present
+if os.getenv("VERCEL_URL"):
+    ALLOWED_HOSTS.append(os.getenv("VERCEL_URL"))
+
+# 3. Required settings for Django running behind Vercel's reverse proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
 
 INSTALLED_APPS = [
     "django.contrib.admin",
