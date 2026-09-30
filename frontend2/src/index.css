@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: rgba(201, 164, 104, 0.35);
+  color: #fff;
+}
+
+/* Visible keyboard focus everywhere -- accessibility floor */
+:focus-visible {
+  outline: 2px solid #c9a468;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Thin custom scrollbar to match the brand */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #37333f;
+  border-radius: 999px;
+}
+.light ::-webkit-scrollbar-thumb {
+  background: #e4ded2;
+}
+
+@layer components {
+  /* Blueprint-style dimension callout -- the app's signature micro-label */
+  .dim-label {
+    @apply inline-flex items-center gap-1.5 font-mono text-[11px] tracking-wide uppercase text-brass/80;
+  }
+  .dim-label::before,
+  .dim-label::after {
+    content: "";
+    @apply h-px w-3 bg-brass/40;
+  }
+
+  .glass-card {
+    @apply relative rounded-2xl border border-white/10 bg-surface/60 backdrop-blur-xl shadow-card transition-colors duration-300 ease-out;
+  }
+  .light .glass-card {
+    @apply border-hairline-light bg-white/70 shadow-none;
+  }
+
+  .feature-card {
+    @apply transition-colors duration-300 ease-out;
+  }
+
+  @media (hover: hover) {
+    .feature-card:hover {
+      background: linear-gradient(135deg, rgba(201, 164, 104, 0.12), rgba(105, 78, 50, 0.38));
+      border-color: rgba(201, 164, 104, 0.45);
+    }
+
+    .feature-card:hover .feature-title {
+      color: #f7ead0;
+    }
+
+    .feature-card:hover .feature-body {
+      color: rgba(247, 234, 208, 0.86);
+    }
+
+    .feature-card:hover .feature-icon {
+      background: rgba(201, 164, 104, 0.18);
+      color: #f7ead0;
+    }
+  }
+
+  .light .feature-card:hover {
+    background: linear-gradient(135deg, rgba(201, 164, 104, 0.18), rgba(236, 224, 196, 0.86));
+    border-color: rgba(201, 164, 104, 0.5);
+  }
+
+  .light .feature-card:hover .feature-title {
+    color: #402f1c;
+  }
+
+  .light .feature-card:hover .feature-body {
+    color: #6d5538;
+  }
+
+  .light .feature-card:hover .feature-icon {
+    background: rgba(201, 164, 104, 0.15);
+    color: #6f4f29;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brass px-6 py-3 font-body font-semibold text-deep transition-all duration-200 hover:bg-brass-soft hover:shadow-glow active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 font-body font-semibold text-linen transition-all duration-200 hover:border-brass/60 hover:text-brass active:scale-[0.98];
+  }
+  .light .btn-ghost {
+    @apply border-hairline-light text-deep hover:border-brass;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-white/10 bg-surface-2/70 px-4 py-3 text-sm text-linen placeholder:text-muted focus:border-brass/60 focus:outline-none transition-colors;
+  }
+  .light .input-field {
+    @apply border-hairline-light bg-white text-deep placeholder:text-muted-light;
+  }
+
+  .section-eyebrow {
+    @apply dim-label mb-4;
+  }
+}

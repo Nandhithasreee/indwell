@@ -1,0 +1,23 @@
+Django==5.0.6
+djangorestframework==3.15.1
+djangorestframework-simplejwt==5.3.1
+django-cors-headers==4.3.1
+python-dotenv==1.0.1
+requests==2.32.3
+jsonschema==4.22.0
+Pillow==10.4.0
+psycopg2-binary==2.9.9
+
+# Async pipeline
+celery==5.4.0
+redis==5.0.7
+
+# LLM providers
+google-generativeai==0.7.2
+openai==1.35.7
+anthropic==0.30.1
+# Ollama: no SDK needed, plain HTTP via `requests`
+
+# Image providers
+# openai (already listed above) covers DALL-E
+# stability.ai, replicate, fal.ai: plain HTTP via `requests`
