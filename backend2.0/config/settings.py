@@ -154,7 +154,10 @@ SIMPLE_JWT = {
 # CORS -- matches the Vite dev server used by the React frontend.
 # ---------------------------------------------------------------------------
 CORS_ALLOWED_ORIGINS = os.getenv(
-    "CORS_ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"
+    "CORS_ALLOWED_ORIGINS", ""http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://indwell-frontend.vercel.app",  # Allowed origin from screenshot
+    "https://indwell-5gfh.vercel.app","
 ).split(",")
 CORS_ALLOW_CREDENTIALS = True
 
@@ -193,3 +196,22 @@ IMAGE_GENERATION_ENABLED = os.getenv("IMAGE_GENERATION_ENABLED", "True").lower()
 
 # Free daily AI generation quota per user
 DAILY_GENERATION_LIMIT = int(os.getenv("DAILY_GENERATION_LIMIT", "10"))
+
+# 3. Trust CSRF origins for POST requests
+CSRF_TRUSTED_ORIGINS = [
+    "https://indwell-frontend.vercel.app",
+    "https://backend-indwell.vercel.app",
+]
+
+# 4. Allow required HTTP headers (including Authorization for JWT)
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
