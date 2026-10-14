@@ -21,3 +21,4 @@ anthropic==0.30.1
 # Image providers
 # openai (already listed above) covers DALL-E
 # stability.ai, replicate, fal.ai: plain HTTP via `requests`
+django-cors-headers
