@@ -1,8 +1,21 @@
+
 {
   "rewrites": [
     {
-      "source": "/auth/:path*",
-      "destination": "/api/auth/:path*"
+      "source": "/auth/(.*)",
+      "destination": "/api/auth/$1"
+    },
+    {
+      "source": "/ai/(.*)",
+      "destination": "/api/ai/$1"
+    },
+    {
+      "source": "/designs/(.*)",
+      "destination": "/api/designs/$1"
+    },
+    {
+      "source": "/feedback/(.*)",
+      "destination": "/api/feedback/$1"
     }
   ]
 }
