@@ -37,6 +37,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
 
 INSTALLED_APPS = [
+     "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -47,7 +48,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
-    "corsheaders",
     # local apps
     "common",
     "accounts",
@@ -156,6 +156,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = os.getenv(
     "CORS_ALLOWED_ORIGINS", ""http://localhost:5173",
     "http://127.0.0.1:5173",
+     "https://indwell-frontend2.vercel.app",
     "https://indwell-frontend.vercel.app",  # Allowed origin from screenshot
     "https://indwell-5gfh.vercel.app","
 ).split(",")
@@ -201,6 +202,7 @@ DAILY_GENERATION_LIMIT = int(os.getenv("DAILY_GENERATION_LIMIT", "10"))
 CSRF_TRUSTED_ORIGINS = [
     "https://indwell-frontend.vercel.app",
     "https://backend-indwell.vercel.app",
+     "https://indwell-frontend2.vercel.app",
 ]
 
 # 4. Allow required HTTP headers (including Authorization for JWT)
