@@ -1,21 +1,18 @@
 
+
+
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/auth/(.*)",
-      "destination": "/api/auth/$1"
-    },
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
     {
-      "source": "/ai/(.*)",
-      "destination": "/api/ai/$1"
-    },
-    {
-      "source": "/designs/(.*)",
-      "destination": "/api/designs/$1"
-    },
-    {
-      "source": "/feedback/(.*)",
-      "destination": "/api/feedback/$1"
+      "src": "/(.*)",
+      "dest": "api/index.py"
     }
   ]
 }
