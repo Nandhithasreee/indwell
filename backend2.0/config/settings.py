@@ -153,13 +153,25 @@ SIMPLE_JWT = {
 # ---------------------------------------------------------------------------
 # CORS -- matches the Vite dev server used by the React frontend.
 # ---------------------------------------------------------------------------
-CORS_ALLOWED_ORIGINS = os.getenv(
-    "CORS_ALLOWED_ORIGINS", ""http://localhost:5173",
+# CORS_ALLOWED_ORIGINS = os.getenv(
+#     "CORS_ALLOWED_ORIGINS", ""http://localhost:5173",
+#     "http://127.0.0.1:5173",
+#      "https://indwell-frontend2.vercel.app",
+#     "https://indwell-frontend.vercel.app",  # Allowed origin from screenshot
+#     "https://indwell-5gfh.vercel.app","
+# ).split(",")
+# CORS_ALLOW_CREDENTIALS = True
+
+
+# CORS configuration
+CORS_ALLOWED_ORIGINS = [
+    "https://indwell-frontend2.vercel.app",
+    "https://indwell-frontend.vercel.app",
+    "https://indwell-5gfh.vercel.app",
+    "http://localhost:5173",
     "http://127.0.0.1:5173",
-     "https://indwell-frontend2.vercel.app",
-    "https://indwell-frontend.vercel.app",  # Allowed origin from screenshot
-    "https://indwell-5gfh.vercel.app","
-).split(",")
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # ---------------------------------------------------------------------------
@@ -217,3 +229,11 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+
+ALLOWED_HOSTS = [
+    "backend-indwell.vercel.app",
+    ".vercel.app",
+    "localhost",
+    "127.0.0.1",
+]
+
