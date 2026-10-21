@@ -58,10 +58,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
+     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -166,11 +166,14 @@ SIMPLE_JWT = {
 # CORS configuration
 CORS_ALLOWED_ORIGINS = [
     "https://indwell-frontend2.vercel.app",
-    "https://indwell-frontend.vercel.app",
-    "https://indwell-5gfh.vercel.app",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    # "https://indwell-frontend.vercel.app",
+    # "https://indwell-5gfh.vercel.app",
+    # "http://localhost:5173",
+    # "http://127.0.0.1:5173",
 ]
+
+CORS_URLS_REGEX = r"^/api/.*$"
+
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -212,7 +215,7 @@ DAILY_GENERATION_LIMIT = int(os.getenv("DAILY_GENERATION_LIMIT", "10"))
 
 # 3. Trust CSRF origins for POST requests
 CSRF_TRUSTED_ORIGINS = [
-    "https://indwell-frontend.vercel.app",
+    # "https://indwell-frontend.vercel.app",
     "https://backend-indwell.vercel.app",
      "https://indwell-frontend2.vercel.app",
 ]
@@ -232,6 +235,7 @@ CORS_ALLOW_HEADERS = [
 
 ALLOWED_HOSTS = [
     "backend-indwell.vercel.app",
+    "https://indwell-frontend2.vercel.app",
     ".vercel.app",
     "localhost",
     "127.0.0.1",
