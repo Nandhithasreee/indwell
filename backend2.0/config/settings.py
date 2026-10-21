@@ -235,7 +235,7 @@ CORS_ALLOW_HEADERS = [
 
 ALLOWED_HOSTS = [
     "backend-indwell.vercel.app",
-    "https://indwell-frontend2.vercel.app",
+    "indwell-frontend2.vercel.app",
     ".vercel.app",
     "localhost",
     "127.0.0.1",
